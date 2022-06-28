@@ -1,0 +1,16 @@
+version: '3'
+services:
+  strapi:
+    build: .
+    container_name: strapi_dockerize
+    environment:
+      # Using Variable Subtitution to obtain environment variables. For more : https://docs.docker.com/compose/compose-file/compose-file-v3/#variable-substitution.
+      NODE_ENV: ${NODE_ENV:-development}
+      JWT_SECRET: ${JWT_SECRET:-hA8OV+S40UvahvrNIQlv6Q==}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:-crypto.randomBytes(16).toString('base64')}
+      APP_KEYS: ${APP_KEYS:-['c68731abc75f376a6bb573bf7bbb2538c67daa9b17bfccac5f36e3d11009833e3c6eed130bc938b59c1e7ee5fa760c8845368a5365878cf5e87995578b31f2d23de66e15164a43c99e70190c1d55a98b3a04b25b9764a6a6151d9428bcb3ca5ef820b599006805b4ea2b260d878ab4a53a3a978eb615338dd1bd23e56138a5f2','c68731abc75f376a6bb573bf7bbb2538c67daa9b17bfccac5f36e3d11009833e3c6eed130bc938b59c1e7ee5fa760c8845368a5365878cf5e87995578b31f2d23de66e15164a43c99e70190c1d55a98b3a04b25b9764a6a6151d9428bcb3ca5ef820b599006805b4ea2b160d878ab4a53a3a978eb615338dd1bd23e56138a5f3']}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-ErhxCk10YqNCImwodl5Ml/Maqnw46oTyLjr+9Na4bjmJSLVWnCS90BJRAAkLsspj98caylAJgikBO9ZS0jEiOQ==}
+    ports:
+      - '3000:3000'
+
+
